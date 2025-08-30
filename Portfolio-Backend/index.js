@@ -2,12 +2,15 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app  = express()
 
 app.use(bodyParser.json());
 
-let mongoUrl = "mongodb+srv://sathsara200:123@cluster0.vnoxb.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0"
+let mongoUrl = process.env.MONGO_URL
 
 mongoose.connect(mongoUrl)
 
